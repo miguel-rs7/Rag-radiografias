@@ -1,4 +1,6 @@
-google-genai
-chromadb
-kagglehub
+streamlit
+tensorflow
+numpy
 pillow
+google-genai
+qdrant-client
