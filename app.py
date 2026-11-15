@@ -18,14 +18,12 @@ if not api_key:
     st.stop()
 
 @st.cache_resource
-def iniciar(api_key):
-    global client
-    client = genai.Client(api_key=api_key)
-    if client is None:
-        raise RuntimeError("No se pudo inicializar el cliente de Gemini.")
+def iniciar_app():
+    embeddings.iniciar(api_key)
+    return conectar()
 
 try:
-    col, db = iniciar()
+    col, db = iniciar_app()
 except Exception as e:
     st.error(f"No se pudo abrir la base RAG: {e}")
     st.stop()
