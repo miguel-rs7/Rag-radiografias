@@ -1,4 +1,3 @@
 .env
-*.db
-chroma/
 __pycache__/
+*.pyc

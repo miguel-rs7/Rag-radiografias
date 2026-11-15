@@ -1,4 +1,9 @@
-MODELO = "gemini-embedding-2"   # si falla: "gemini-embedding-2-preview"
+import os
+
+MODELO = "gemini-embedding-2"
 DIM = 768
-BASE = "/content/drive/MyDrive/radiologia"
+BASE = os.path.join(
+    os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+    "radiologia"
+)
 COLECCION = "rx_gemini"
