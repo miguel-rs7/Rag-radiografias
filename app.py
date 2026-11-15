@@ -61,23 +61,15 @@ if st.button("Buscar y preguntar"):
                         f"Imagen: {id_}; etiqueta: {diagnostico}; distancia: {distancia}"
                     )
 
-                prompt = f"""
-Eres un chatbot educativo sobre radiografías de tórax.
-Responde en español de forma clara y sencilla.
+                prompt_corto = f"""
+Analiza estos resultados de una búsqueda de radiografías similares.
+Explica qué significan las etiquetas encontradas.
+No confirmes un diagnóstico médico.
 
-Usa las etiquetas recuperadas como referencias de una base de datos,
-no como diagnóstico de la radiografía subida.
-Explica los términos técnicos con palabras sencillas.
-Una distancia menor indica mayor similitud dentro del sistema.
-No inventes hallazgos médicos ni presentes la respuesta como diagnóstico.
+Resultados:
+{contexto}
 
-Imágenes similares recuperadas:
-{chr(10).join(contexto)}
-
-Pregunta del usuario:
-{pregunta}
-
-Responde directamente y de forma útil.
+Pregunta: {pregunta}
 """
 
                 with st.spinner("Gemini está preparando la respuesta..."):
