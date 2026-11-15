@@ -23,7 +23,12 @@ def embed(ruta):
                 model=MODELO, contents=[parte],
                 config=types.EmbedContentConfig(output_dimensionality=DIM))
             return r.embeddings[0].values
+        
         except Exception as e:
-            print("Error:", str(e)[:150])
+            print("Error al generar embedding:", repr(e))
             time.sleep(5 * (intento + 1))
-    return None
+
+    raise RuntimeError(
+        "No se pudo generar el embedding de la imagen. "
+        "Revisa el error anterior en los registros de Streamlit."
+    )
