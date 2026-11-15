@@ -18,9 +18,11 @@ if not api_key:
     st.stop()
 
 @st.cache_resource
-def iniciar():
-    embeddings.iniciar(api_key)
-    return conectar()
+def iniciar(api_key):
+    global client
+    client = genai.Client(api_key=api_key)
+    if client is None:
+        raise RuntimeError("No se pudo inicializar el cliente de Gemini.")
 
 try:
     col, db = iniciar()
