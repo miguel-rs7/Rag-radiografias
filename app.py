@@ -71,7 +71,7 @@ Pregunta:
                 with st.spinner("Gemini está preparando la respuesta..."):
                     cliente = genai.Client(api_key=api_key)
                     respuesta = cliente.models.generate_content(
-                        model="gemini-3-flash-preview",
+                        model="gemini-3.5-flash-lite",
                         contents=prompt
                     )
 
