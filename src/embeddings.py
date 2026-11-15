@@ -25,10 +25,6 @@ def embed(ruta):
             return r.embeddings[0].values
         
         except Exception as e:
-            print("Error al generar embedding:", repr(e))
+            print("Error:", str(e)[:150])
             time.sleep(5 * (intento + 1))
-
-    raise RuntimeError(
-        "No se pudo generar el embedding de la imagen. "
-        "Revisa el error anterior en los registros de Streamlit."
-    )
+    return None
