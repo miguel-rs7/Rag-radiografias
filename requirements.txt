@@ -1,6 +1,5 @@
 streamlit
-tensorflow
-numpy
-pillow
+chromadb
 google-genai
-qdrant-client
+pillow
+numpy
