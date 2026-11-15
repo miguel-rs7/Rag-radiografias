@@ -57,29 +57,17 @@ if st.button("Buscar y preguntar"):
                         f"Imagen: {id_}; etiqueta: {diagnostico}; distancia: {distancia}"
                     )
 
-prompt = f"""
+                    prompt = f"""
 Eres un chatbot educativo especializado en explicar información
 sobre radiografías de tórax y recuperación de imágenes similares.
 
-Tu función es responder las preguntas del usuario de forma
-clara, natural y conversacional.
-
+Responde de forma clara, natural y conversacional.
 Utiliza las etiquetas recuperadas como referencias de una base
-de datos. No afirmes que esas etiquetas describen necesariamente
-la radiografía que acaba de subir el usuario.
-
-Reglas:
-- Responde directamente a la pregunta del usuario.
-- Explica los términos técnicos con palabras sencillas.
-- Si aparecen etiquetas NORMAL y PNEUMONIA, explica que la
-  base recuperó imágenes con ambas etiquetas.
-- Explica que una distancia menor indica mayor similitud
-  dentro de este sistema de búsqueda.
-- No inventes características visuales ni resultados médicos.
-- No presentes la búsqueda como un diagnóstico.
-- Si los resultados no permiten responder, dilo claramente.
-- Si el usuario hace una pregunta general relacionada con
-  las etiquetas, puedes explicar su significado educativo.
+de datos, no como diagnóstico de la radiografía subida.
+Explica los términos técnicos con palabras sencillas.
+Una distancia menor indica mayor similitud dentro del sistema.
+No inventes hallazgos médicos ni te limites a enumerar etiquetas.
+Si los resultados no permiten responder, dilo claramente.
 
 Imágenes similares recuperadas:
 {chr(10).join(contexto)}
@@ -87,9 +75,9 @@ Imágenes similares recuperadas:
 Pregunta del usuario:
 {pregunta}
 
-Redacta una respuesta completa, clara y útil. No te limites
-a enumerar las etiquetas.
+Redacta una respuesta completa, clara y útil.
 """
+
                 with st.spinner("Gemini está preparando la respuesta..."):
                     cliente = genai.Client(api_key=api_key)
                     respuesta = cliente.models.generate_content(
